@@ -22,7 +22,7 @@
 
 			<!-- logo -->
 			<div class="pull-left left logo">
-				<a href="./index.html"><img src="./assets/img/gynhub-branco.png" alt="Projeto Integrador" /></a>
+				<a href="./index.php"><img src="./assets/img/gynhub-branco.png" alt="Projeto Integrador" /></a>
 				<h1 class="sr-only">Projeto Integrador - Caio Westphalen RA22202420</h1>
 			</div>
 
@@ -80,27 +80,15 @@
 				<li><a href="#" class="js-sub-menu-toggle">Caio</a>
 
 				</li>
-				<li><a href="index.php" class="js-sub-menu-toggle"><i class="fa fa-dashboard"></i><span class="text">Painel de Controle</span>
-					</a>
-
+				<li>
+					<a href="index.php"><i class="fa fa-dashboard"></i><span class="text">Painel de Controle</span></a>
 				</li>
 
 				<li><a href="#" class="js-sub-menu-toggle"><i class="fa fa-user"></i><span class="text">Clientes</span>
 						<i class="toggle-icon fa fa-angle-left"></i></a>
 					<ul class="sub-menu ">
 						<li><a href="novoAluno.php"><i class="fa fa-user"></i><span class="text">Novo Aluno</span></a></li>
-						<li><a href="visitante.php"><i class="fa fa-user"></i><span class="text">Visitante</span></a></li>
 						<li><a href="gerenciarAlunos.php"><i class="fa fa-user"></i><span class="text">Gerenciar Alunos</span></a></li>
-						<li><a href="ativarPlanos.php"><i class="fa fa-user"></i><span class="text">Ativar Planos</span></a></li>
-					</ul>
-				</li>
-
-				<li><a href="#" class="js-sub-menu-toggle"><i class="fa fa-calendar"></i><span class="text">Agendamento</span>
-						<i class="toggle-icon fa fa-angle-left"></i></a>
-					<ul class="sub-menu ">
-						<li><a href="#"><i class="fa fa-calendar"></i><span class="text">Novo Agendamento</span></a></li>
-						<li><a href="#"><i class="fa fa-calendar"></i><span class="text">Visitante</span></a></li>
-						<li><a href="#"><i class="fa fa-calendar"></i><span class="text">Grade de Atividades</span></a></li>
 						
 					</ul>
 				</li>

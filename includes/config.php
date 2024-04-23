@@ -2,7 +2,7 @@
 
 $servername = "localhost";
 $username = "capsulif_unidombosco";
-$password = "yA.RUh5DZQ4?";
+$password = "@C0sta000";
 $dbname = "capsulif_projetointegrador";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -10,7 +10,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
 
     $error_log = fopen("error.log", "a");
-    fwrite($error_log, date("Y-m-d H:i:s") . " Erro de conexão: " . $conn->connect_error . "\n");
+    fwrite($error_log, date("d-m-Y H:i:s") . " Erro de conexão: " . $conn->connect_error . "\n");
     fclose($error_log);
     
     // Mensagem de erro para exibição ao usuário

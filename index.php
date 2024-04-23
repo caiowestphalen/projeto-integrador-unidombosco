@@ -1,6 +1,23 @@
 <?php
-include_once('./includes/header.php');
-/*include_once('./includes/config.php');*/
+include_once('includes/header.php');
+include_once('includes/config.php');
+
+/*
+// Consulta SQL para obter informações sobre os últimos cadastros de alunos ativos
+$sql = "SELECT nome, data_cadastro, plano, foto FROM alunos WHERE status = 'ativo' ORDER BY data_cadastro DESC LIMIT 5";
+
+// Executar a consulta SQL e armazenar os resultados em $result
+$result = $conn->query($sql);
+
+$result = $conn->query($sql);
+
+if (!$result) {
+	die("Erro na consulta SQL: " . $conn->error);
+}
+
+$sql = "SELECT nome, rg, profissao, sexo, data_nascimento, nacionalidade, estado_civil, email, telefone, endereco, bairro, cep, estado, cidade, plano, dia_vencimento, forma_pagamento, foto, data_cadastro FROM alunos";
+*/
+
 ?>
 
 
@@ -86,8 +103,7 @@ include_once('./includes/header.php');
 									<h3><i class="fa fa-user"></i> Alunos ativos</h3>
 
 									<div class="btn-group widget-header-toolbar">
-										<a href="#" title="Expand/Collapse" class="btn-borderless btn-toggle-expand"><i
-												class="fa fa-chevron-up"></i></a>
+										<a href="#" title="Expand/Collapse" class="btn-borderless btn-toggle-expand"><i class="fa fa-chevron-up"></i></a>
 									</div>
 								</div>
 								<div class="widget-content">
@@ -118,7 +134,8 @@ include_once('./includes/header.php');
 						<div class="col-md-6">
 							<div class="widget widget-table">
 								<div class="widget-header">
-									<h3><i class="fa fa-calendar"></i> Agendamentos</h3></div>
+									<h3><i class="fa fa-calendar"></i> Últimos Cadastros</h3>
+								</div>
 								<div class="widget-content">
 									<table class="table table-bordered">
 										<thead>
@@ -126,18 +143,13 @@ include_once('./includes/header.php');
 												<th class="text-center"><i class="fa fa-cog"></i></th>
 												<th>Aluno(a)</th>
 												<th>Data</th>
-												<th>Horário</th>
+												<th>Plano</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td class="text-center"><a href="#"><i class="fa fa-camera" style="text-decoration: none; color: rgb(26, 99, 235);"></i></a> | <a href="#"><i class="fa fa-ban" style="text-decoration: none; color: red;"></i></a>
-												</td><td>Caio Cesar</td>
-												<td>17/04/2024</td>
-												<td>22:00</td>
-											</tr>
+
 										</tbody>
-										
+
 									</table>
 								</div>
 							</div>
@@ -150,7 +162,8 @@ include_once('./includes/header.php');
 					<div class="col">
 						<div class="widget widget-table">
 							<div class="widget-header">
-								<h3><i class="fa fa-money"></i> Mensalidades a vencer</h3></div>
+								<h3><i class="fa fa-money"></i> Mensalidades a vencer</h3>
+							</div>
 							<div class="widget-content">
 								<table class="table table-striped">
 									<thead>
@@ -199,27 +212,42 @@ include_once('./includes/header.php');
 	</div>
 
 	<!-- Javascript -->
-	<script src="assets/js/jquery/jquery-2.1.0.min.js"></script>
-	<script src="assets/js/bootstrap/bootstrap.js"></script>
-	<script src="assets/js/plugins/modernizr/modernizr.js"></script>
-	<script src="assets/js/plugins/bootstrap-tour/bootstrap-tour.custom.js"></script>
-	<script src="assets/js/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-	<script src="assets/js/king-common.js"></script>
-	<script src="assets/js/plugins/stat/jquery.easypiechart.min.js"></script>
-	<script src="assets/js/plugins/raphael/raphael-2.1.0.min.js"></script>
-	<script src="assets/js/plugins/stat/flot/jquery.flot.min.js"></script>
-	<script src="assets/js/plugins/stat/flot/jquery.flot.resize.min.js"></script>
-	<script src="assets/js/plugins/stat/flot/jquery.flot.time.min.js"></script>
-	<script src="assets/js/plugins/stat/flot/jquery.flot.pie.min.js"></script>
-	<script src="assets/js/plugins/stat/flot/jquery.flot.tooltip.min.js"></script>
-	<script src="assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
-	<script src="assets/js/plugins/datatable/jquery.dataTables.min.js"></script>
-	<script src="assets/js/plugins/datatable/dataTables.bootstrap.js"></script>
-	<script src="assets/js/plugins/jquery-mapael/jquery.mapael.js"></script>
-	<script src="assets/js/plugins/raphael/maps/usa_states.js"></script>
-	<script src="assets/js/king-chart-stat.js"></script>
-	<script src="assets/js/king-table.js"></script>
-	<script src="assets/js/king-components.js"></script>
+	<script>
+		$(document).ready(function() {
+			$(".open-modal").click(function() {
+				var imgSrc = $(this).data("img");
+				$("#modalImg").attr("src", imgSrc);
+				$("#myModal").css("display", "block");
+			});
+
+			$(".close").click(function() {
+				$("#myModal").css("display", "none");
+			});
+		});
+	</script>
+
+
+	<script src="./assets/js/jquery/jquery-2.1.0.min.js"></script>
+	<script src="./assets/js/bootstrap/bootstrap.js"></script>
+	<script src="./assets/js/plugins/modernizr/modernizr.js"></script>
+	<script src="./assets/js/plugins/bootstrap-tour/bootstrap-tour.custom.js"></script>
+	<script src="./assets/js/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="./assets/js/king-common.js"></script>
+	<script src="./assets/js/plugins/stat/jquery.easypiechart.min.js"></script>
+	<script src="./assets/js/plugins/raphael/raphael-2.1.0.min.js"></script>
+	<script src="./assets/js/plugins/stat/flot/jquery.flot.min.js"></script>
+	<script src="./assets/js/plugins/stat/flot/jquery.flot.resize.min.js"></script>
+	<script src="./assets/js/plugins/stat/flot/jquery.flot.time.min.js"></script>
+	<script src="./assets/js/plugins/stat/flot/jquery.flot.pie.min.js"></script>
+	<script src="./assets/js/plugins/stat/flot/jquery.flot.tooltip.min.js"></script>
+	<script src="./assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
+	<script src="./assets/js/plugins/datatable/jquery.dataTables.min.js"></script>
+	<script src="./assets/js/plugins/datatable/dataTables.bootstrap.js"></script>
+	<script src="./assets/js/plugins/jquery-mapael/jquery.mapael.js"></script>
+	<script src="./assets/js/plugins/raphael/maps/usa_states.js"></script>
+	<script src="./assets/js/king-chart-stat.js"></script>
+	<script src="./assets/js/king-table.js"></script>
+	<script src="./assets/js/king-components.js"></script>
 </body>
 
 </html>

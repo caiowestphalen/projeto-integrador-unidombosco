@@ -1,0 +1,60 @@
+[22-Apr-2024 17:48:56 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home3/capsulif/public_html/gymhub/includes/config.php on line 8
+[22-Apr-2024 17:52:22 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'capsulif_unidombosco'@'localhost' (using password: YES) in /home3/capsulif/public_html/gymhub/includes/config.php on line 8
+[22-Apr-2024 17:52:53 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'capsulif_unidombosco'@'localhost' (using password: YES) in /home3/capsulif/public_html/gymhub/includes/config.php on line 8
+[22-Apr-2024 17:53:11 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'capsulif_unidombosco'@'localhost' (using password: YES) in /home3/capsulif/public_html/gymhub/includes/config.php on line 8
+[22-Apr-2024 17:54:23 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'capsulif_unidombosco'@'localhost' (using password: YES) in /home3/capsulif/public_html/gymhub/includes/config.php on line 8
+[22-Apr-2024 17:54:27 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'capsulif_unidombosco'@'localhost' (using password: YES) in /home3/capsulif/public_html/gymhub/includes/config.php on line 8
+[22-Apr-2024 17:55:00 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'capsulif_unidombosco'@'localhost' (using password: YES) in /home3/capsulif/public_html/gymhub/includes/config.php on line 8
+[22-Apr-2024 17:55:03 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'capsulif_unidombosco'@'localhost' (using password: YES) in /home3/capsulif/public_html/gymhub/includes/config.php on line 8
+[22-Apr-2024 17:57:59 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'capsulif_unidombosco'@'localhost' (using password: YES) in /home3/capsulif/public_html/gymhub/includes/config.php on line 8
+[22-Apr-2024 17:58:04 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'capsulif_unidombosco'@'localhost' (using password: YES) in /home3/capsulif/public_html/gymhub/includes/config.php on line 8
+[22-Apr-2024 17:58:06 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'capsulif_unidombosco'@'localhost' (using password: YES) in /home3/capsulif/public_html/gymhub/includes/config.php on line 8
+[22-Apr-2024 17:58:10 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'capsulif_unidombosco'@'localhost' (using password: YES) in /home3/capsulif/public_html/gymhub/includes/config.php on line 8
+[22-Apr-2024 17:58:11 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'capsulif_unidombosco'@'localhost' (using password: YES) in /home3/capsulif/public_html/gymhub/includes/config.php on line 8
+[22-Apr-2024 17:58:12 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'capsulif_unidombosco'@'localhost' (using password: YES) in /home3/capsulif/public_html/gymhub/includes/config.php on line 8
+[22-Apr-2024 17:58:56 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'capsulif_unidombosco'@'localhost' (using password: YES) in /home3/capsulif/public_html/gymhub/includes/config.php on line 8
+[22-Apr-2024 17:58:58 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'capsulif_unidombosco'@'localhost' (using password: YES) in /home3/capsulif/public_html/gymhub/includes/config.php on line 8
+[23-Apr-2024 12:10:22 UTC] PHP Warning:  include_once(/includes/header.php): Failed to open stream: No such file or directory in /home3/capsulif/public_html/gymhub/novoAluno.php on line 2
+[23-Apr-2024 12:10:22 UTC] PHP Warning:  include_once(): Failed opening '/includes/header.php' for inclusion (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home3/capsulif/public_html/gymhub/novoAluno.php on line 2
+[23-Apr-2024 12:10:22 UTC] PHP Warning:  include_once(/includes/config.php): Failed to open stream: No such file or directory in /home3/capsulif/public_html/gymhub/novoAluno.php on line 3
+[23-Apr-2024 12:10:22 UTC] PHP Warning:  include_once(): Failed opening '/includes/config.php' for inclusion (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home3/capsulif/public_html/gymhub/novoAluno.php on line 3
+[23-Apr-2024 12:10:22 UTC] PHP Warning:  Undefined variable $conn in /home3/capsulif/public_html/gymhub/novoAluno.php on line 41
+[23-Apr-2024 12:10:22 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home3/capsulif/public_html/gymhub/novoAluno.php:41
+Stack trace:
+#0 {main}
+  thrown in /home3/capsulif/public_html/gymhub/novoAluno.php on line 41
+[23-Apr-2024 12:18:05 UTC] PHP Warning:  Undefined variable $telefone_comercial in /home3/capsulif/public_html/gymhub/novoAluno.php on line 38
+[23-Apr-2024 12:18:05 UTC] PHP Warning:  Undefined variable $telefone_emergencia in /home3/capsulif/public_html/gymhub/novoAluno.php on line 38
+[23-Apr-2024 12:18:29 UTC] PHP Warning:  Undefined variable $telefone_comercial in /home3/capsulif/public_html/gymhub/novoAluno.php on line 38
+[23-Apr-2024 12:18:29 UTC] PHP Warning:  Undefined variable $telefone_emergencia in /home3/capsulif/public_html/gymhub/novoAluno.php on line 38
+[23-Apr-2024 12:21:21 UTC] PHP Warning:  Undefined variable $telefone_comercial in /home3/capsulif/public_html/gymhub/novoAluno.php on line 38
+[23-Apr-2024 12:21:21 UTC] PHP Warning:  Undefined variable $telefone_emergencia in /home3/capsulif/public_html/gymhub/novoAluno.php on line 38
+[23-Apr-2024 12:51:12 UTC] PHP Parse error:  syntax error, unexpected double-quoted string "</div>" in /home3/capsulif/public_html/gymhub/novoAluno.php on line 75
+[23-Apr-2024 12:51:28 UTC] PHP Parse error:  Unclosed '{' on line 11 in /home3/capsulif/public_html/gymhub/novoAluno.php on line 303
+[23-Apr-2024 12:52:31 UTC] PHP Parse error:  Unclosed '{' on line 11 in /home3/capsulif/public_html/gymhub/novoAluno.php on line 303
+[23-Apr-2024 12:52:41 UTC] PHP Parse error:  Unclosed '{' on line 11 in /home3/capsulif/public_html/gymhub/novoAluno.php on line 303
+[23-Apr-2024 12:53:32 UTC] PHP Parse error:  Unclosed '{' on line 11 in /home3/capsulif/public_html/gymhub/novoAluno.php on line 303
+[23-Apr-2024 12:53:53 UTC] PHP Parse error:  Unclosed '{' on line 11 in /home3/capsulif/public_html/gymhub/novoAluno.php on line 303
+[23-Apr-2024 13:03:31 UTC] PHP Warning:  Attempt to read property "num_rows" on bool in /home3/capsulif/public_html/gymhub/novoAluno.php on line 18
+[23-Apr-2024 13:09:37 UTC] PHP Warning:  Attempt to read property "num_rows" on bool in /home3/capsulif/public_html/gymhub/novoAluno.php on line 18
+[23-Apr-2024 13:09:37 UTC] PHP Warning:  Attempt to read property "num_rows" on bool in /home3/capsulif/public_html/gymhub/novoAluno.php on line 165
+[23-Apr-2024 13:30:43 UTC] PHP Warning:  Undefined array key "cpf" in /home3/capsulif/public_html/gymhub/gerenciarAlunos.php on line 87
+[23-Apr-2024 13:34:48 UTC] PHP Warning:  Undefined array key "cpf" in /home3/capsulif/public_html/gymhub/gerenciarAlunos.php on line 87
+[23-Apr-2024 13:37:50 UTC] PHP Warning:  Undefined array key "cpf" in /home3/capsulif/public_html/gymhub/gerenciarAlunos.php on line 96
+[23-Apr-2024 14:24:17 UTC] PHP Warning:  Undefined array key "whatsapp" in /home3/capsulif/public_html/gymhub/gerenciarAlunos.php on line 94
+[23-Apr-2024 14:25:48 UTC] PHP Warning:  Undefined array key "whatsapp" in /home3/capsulif/public_html/gymhub/gerenciarAlunos.php on line 94
+[23-Apr-2024 14:27:46 UTC] PHP Warning:  Undefined array key "whatsapp" in /home3/capsulif/public_html/gymhub/gerenciarAlunos.php on line 99
+[23-Apr-2024 14:29:35 UTC] PHP Warning:  Undefined array key "whatsapp" in /home3/capsulif/public_html/gymhub/gerenciarAlunos.php on line 99
+[23-Apr-2024 14:29:47 UTC] PHP Warning:  Undefined array key "whatsapp" in /home3/capsulif/public_html/gymhub/gerenciarAlunos.php on line 99
+[23-Apr-2024 14:30:28 UTC] PHP Warning:  Undefined array key "whatsapp" in /home3/capsulif/public_html/gymhub/gerenciarAlunos.php on line 99
+[23-Apr-2024 14:30:43 UTC] PHP Warning:  Undefined array key "whatsapp" in /home3/capsulif/public_html/gymhub/gerenciarAlunos.php on line 99
+[23-Apr-2024 14:31:39 UTC] PHP Warning:  Undefined array key "whatsapp" in /home3/capsulif/public_html/gymhub/gerenciarAlunos.php on line 99
+[23-Apr-2024 14:31:45 UTC] PHP Warning:  Undefined array key "whatsapp" in /home3/capsulif/public_html/gymhub/gerenciarAlunos.php on line 99
+[23-Apr-2024 14:33:44 UTC] PHP Warning:  Undefined array key "whatsapp" in /home3/capsulif/public_html/gymhub/gerenciarAlunos.php on line 108
+[23-Apr-2024 14:33:51 UTC] PHP Warning:  Undefined array key "whatsapp" in /home3/capsulif/public_html/gymhub/gerenciarAlunos.php on line 108
+[23-Apr-2024 14:34:17 UTC] PHP Warning:  Undefined array key "whatsapp" in /home3/capsulif/public_html/gymhub/gerenciarAlunos.php on line 108
+[23-Apr-2024 14:34:23 UTC] PHP Warning:  Undefined array key "whatsapp" in /home3/capsulif/public_html/gymhub/gerenciarAlunos.php on line 108
+[23-Apr-2024 16:46:03 UTC] PHP Warning:  Undefined array key "whatsapp" in /home3/capsulif/public_html/gymhub/gerenciarAlunos.php on line 109
+[23-Apr-2024 16:46:18 UTC] PHP Warning:  Undefined array key "whatsapp" in /home3/capsulif/public_html/gymhub/gerenciarAlunos.php on line 109
+[23-Apr-2024 16:46:44 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/capsulif/public_html/gymhub/includes/header.php:1) in /home3/capsulif/public_html/gymhub/editar.php on line 76
+[23-Apr-2024 16:48:40 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/capsulif/public_html/gymhub/includes/header.php:1) in /home3/capsulif/public_html/gymhub/editar.php on line 76
