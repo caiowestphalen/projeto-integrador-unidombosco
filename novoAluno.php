@@ -121,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                         <label class="col-sm-3 col-form-label">Nome
                                                                             Completo</label>
                                                                         <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" name="nome">
+                                                                            <input type="text" class="form-control" name="nome" required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -130,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                         <label
                                                                             class="col-sm-3 col-form-label">RG</label>
                                                                         <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" name="rg">
+                                                                            <input type="text" class="form-control" name="rg" required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -141,7 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                         <label
                                                                             class="col-sm-3 col-form-label">Sexo</label>
                                                                         <div class="col-sm-9" for="sexo">
-                                                                            <select class="form-control" name="sexo">
+                                                                            <select class="form-control" name="sexo" required>
                                                                                 <option>Masculino</option>
                                                                                 <option>Feminino</option>
                                                                             </select>
@@ -153,7 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                         <label class="col-sm-3 col-form-label">Data de
                                                                             Nascimento</label>
                                                                         <div class="col-sm-9">
-                                                                            <input type="date" class="form-control" placeholder="dd/mm/yyyy" name="data_nascimento">
+                                                                            <input type="date" class="form-control" placeholder="dd/mm/yyyy" name="data_nascimento" required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -165,6 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                             Civil</label>
                                                                         <div class="col-sm-9">
                                                                             <select class="form-control" name="estado_civil">
+                                                                                <option selected>Sem informações</option>
                                                                                 <option>Solteiro(a)</option>
                                                                                 <option>Casado(a)</option>
                                                                                 <option>Divorciado(a)</option>
@@ -177,7 +178,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-3 col-form-label" for="status">Membro</label>
                                                                         <div class="col-sm-9">
-                                                                            <select class="form-control" name="status">
+                                                                            <select class="form-control" name="status" required>
                                                                                 <option>Ativo</option>
                                                                                 <option>Visitante</option>
                                                                             </select>
@@ -254,7 +255,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                         <label
                                                                             class="col-sm-3 col-form-label">Telefone</label>
                                                                         <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" name="telefone">
+                                                                            <input type="text" class="form-control" name="telefone" required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -263,7 +264,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                         <label
                                                                             class="col-sm-3 col-form-label">E-mail</label>
                                                                         <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" name="email">
+                                                                            <input type="text" class="form-control" name="email" required>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -277,7 +278,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-3 col-form-label" for="plano">Plano</label>
                                                                         <div class="col-sm-9">
-                                                                            <select class="form-control" name="plano">
+                                                                            <select class="form-control" name="plano" required>
                                                                                 <option>Mensal</option>
                                                                                 <option>Trimestral</option>
                                                                                 <option>Anual</option>
@@ -290,7 +291,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-3 col-form-label" for="forma_pagamento">Forma</label>
                                                                         <div class="col-sm-9">
-                                                                            <select class="form-control" name="forma_pagamento">
+                                                                            <select class="form-control" name="forma_pagamento" required>
                                                                                 <option>PIX</option>
                                                                                 <option>Cartão de Crédito</option>
                                                                                 <option>Dinheiro</option>
@@ -302,7 +303,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                     <div class="form-group row">
                                                                         <label class="col-sm-3 col-form-label" for="dia_pagamento">Dia</label>
                                                                         <div class="col-sm-9">
-                                                                            <select class="form-control" name="dia_pagamento">
+                                                                            <select class="form-control" name="dia_pagamento" required>
                                                                                 <?php
                                                                                 for ($i = 1; $i <= 31; $i++) {
                                                                                     echo "<option value='$i'>$i</option>";
@@ -315,7 +316,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                             </div>
 
                                                         <button type="submit" class="btn btn-outline-primary btn-cadastrar me-2">Cadastrar</button>
-                                                        <button class="btn btn-light">Cancelar</button>
+                                                        <button class="btn btn-outline-danger">Cancelar</button>
                                                         </form>
                                                     </div>
                                                 </div>

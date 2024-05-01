@@ -1,37 +1,42 @@
 <?php
-// Incluindo o arquivo de conexão com o banco de dados
 include('partials/conexao.php');
 
-// Definindo o número de registros por página
 $registros_por_pagina = 10;
 
-// Verificando a página atual
 if (isset($_GET['pagina'])) {
     $pagina_atual = $_GET['pagina'];
 } else {
     $pagina_atual = 1;
 }
 
-// Calculando o offset para a consulta SQL
 $offset = ($pagina_atual - 1) * $registros_por_pagina;
 
-// Consulta SQL para buscar os alunos com paginação
 $sql = "SELECT * FROM alunos LIMIT $offset, $registros_por_pagina";
 
-// Executando a consulta
 $resultado = mysqli_query($conn, $sql);
 
-// Contando o número total de registros
 $total_registros_sql = "SELECT COUNT(*) AS total_registros FROM alunos";
 $total_registros_resultado = mysqli_query($conn, $total_registros_sql);
 $total_registros_array = mysqli_fetch_assoc($total_registros_resultado);
 $total_registros = $total_registros_array['total_registros'];
 
-// Calculando o número total de páginas
 $total_paginas = ceil($total_registros / $registros_por_pagina);
 
-// Fechando a conexão
 mysqli_close($conn);
+
+session_start();
+
+if (isset($_SESSION['mensagemSucesso'])) {
+
+    $mensagemSucesso = $_SESSION['mensagemSucesso'];
+    
+    unset($_SESSION['mensagemSucesso']);
+} else {
+
+    $mensagemSucesso = '';
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -57,6 +62,19 @@ mysqli_close($conn);
     <link rel="stylesheet" href="css/vertical-layout-light/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="images/favicon.png" />
+    
+    <style>
+    	.icon-wrapper {
+		    margin-right: 5px;
+		}
+
+		.icon-wrapper a {
+		    text-decoration: none;
+		    color: inherit;
+		}
+
+    </style>
+
 </head>
 
 <body>
@@ -87,6 +105,11 @@ mysqli_close($conn);
                                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
                                     <!-- DIVISOR -->
                                 </div>
+						        <?php if (!empty($mensagemSucesso)) : ?>
+						            <div class="alert alert-success alert-dismissible fade show" role="alert">
+						                <?php echo $mensagemSucesso; ?>
+						            </div>
+						        <?php endif; ?>
 
 
                                 <div class="tab-content tab-content-basic">
@@ -99,13 +122,14 @@ mysqli_close($conn);
 											        <div class="card-body">
 											            <h4 class="card-title">Gerenciamento de Alunos</h4>
 											            <p class="card-description">
-											                Realize alterações nos cadastros de alunos.
+											                Realize alterações nos cadastros de alunos. Clique nos icones para determinadas ações.
 											            </p>
 											            <div class="table-responsive">
 											                <table class="table table-hover">
 											                    <thead>
 											                        <tr>
 											                            <th>Gerenciar</th>
+											                            <th>Matricula</th>
 											                            <th>Nome</th>
 											                            <th>RG</th>
 											                            <th>Status</th>
@@ -115,23 +139,32 @@ mysqli_close($conn);
 											                            <th>Data do Cadastro</th>
 											                        </tr>
 											                    </thead>
-											                    <tbody>
-											                        <?php
-											                        // Iterando sobre os resultados da consulta e preenchendo a tabela
-											                        while ($row = mysqli_fetch_assoc($resultado)) {
-											                            echo "<tr>";
-											                            echo "<td><a href='editar_aluno.php?id=" . $row['id'] . "'><i class='icon-sm mdi mdi-tooltip-edit'></i></a></td>";
-											                            echo "<td>" . $row['nome'] . "</td>";
-											                            echo "<td>" . $row['rg'] . "</td>";
-											                            echo "<td>" . $row['status'] . "</td>";
-											                            echo "<td>" . $row['telefone'] . "</td>";
-											                            echo "<td>" . $row['email'] . "</td>";
-											                            echo "<td>" . $row['plano'] . "</td>";
-											                            echo "<td>" . date('d-m-Y', strtotime($row['data_cadastro'])) . "</td>";
-											                            echo "</tr>";
-											                        }
-											                        ?>
-											                    </tbody>
+																<tbody>
+																    <?php
+																        while ($row = mysqli_fetch_assoc($resultado)) {
+																            echo "<tr>";
+																            echo "<td>"; // Início da coluna "Gerenciar"
+																            echo "<span class='icon-wrapper text-info'><a href='editar_aluno.php?id=" . $row['id'] . "' title='Aqui você consegue editar os dados do aluno.'><i class='icon-sm mdi mdi-tooltip-edit'></i></a></span>"; // Editar
+																            echo "<span class='icon-wrapper text-success'><a href='https://wa.me/55" . $row['telefone'] . "' target='_blank'title='Envie uma mensagem direta no whatsapp do aluno.'><i class='icon-sm mdi mdi-whatsapp'></i></a></span>"; // WhatsApp
+																            echo "<span class='icon-wrapper text-warning'><a href='mailto:" . $row['email'] . "'><i class='icon-sm mdi mdi-email'title='Envie um e-mail para o aluno.'></i></a></span>"; // Email
+																            echo "<a onclick='confirmarExclusao(" . $row['id'] . ")' title='Excluir o aluno.' class='text-danger' style='cursor: pointer;'><i class='icon-sm mdi mdi-delete'></i></a>"; // Excluir
+																            echo "</td>"; // Fim da coluna "Gerenciar"
+																            echo "<td>" . $row['id'] . "</td>";
+																            echo "<td>" . $row['nome'] . "</td>";
+																            echo "<td>" . $row['rg'] . "</td>";
+																            $status = $row['status'];
+																            $status_class = ($status == 'Visitante') ? 'text-danger fw-bold' : 'text-success fw-bold';
+																            echo "<td class='$status_class'>$status</td>";
+																            echo "<td>" . $row['telefone'] . "</td>";
+																            echo "<td>" . $row['email'] . "</td>";
+																            echo "<td>" . ($status == 'Visitante' ? '-----' : $row['plano']) . "</td>";
+																            echo "<td>" . date('d-m-Y', strtotime($row['data_cadastro'])) . "</td>";
+																            echo "</tr>";
+																        }
+																    ?>
+																</tbody>
+
+
 															    <nav aria-label="Page navigation">
 															        <ul class="pagination justify-content-center">
 															            <li class="page-item <?php echo $pagina_atual == 1 ? 'disabled' : ''; ?>">
@@ -173,6 +206,13 @@ mysqli_close($conn);
 
     </div>
     </div>
+	<script>
+	    function confirmarExclusao(aluno_id) {
+	        if (confirm("Tem certeza de que deseja excluir este aluno?")) {
+	            window.location.href = "excluir_aluno.php?id=" + aluno_id;
+	        }
+	    }
+	</script>
 
     <!-- plugins:js -->
     <script src="vendors/js/vendor.bundle.base.js"></script>
@@ -195,6 +235,9 @@ mysqli_close($conn);
     <script src="js/dashboard.js"></script>
     <script src="js/Chart.roundedBarCharts.js"></script>
     <!-- End custom js for this page-->
+
+
+
 </body>
 
 </html>

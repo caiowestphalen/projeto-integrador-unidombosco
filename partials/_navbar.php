@@ -18,7 +18,7 @@
         <ul class="navbar-nav">
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
             <h1 class="welcome-text">Olá, <span class="text-black fw-bold">UniDomBosco</span></h1>
-            <h3 class="welcome-sub-text">Este é o projeto integrador do Caio. </h3>
+            <h3 class="welcome-sub-text">Professor, seja bem-vindo ao gerenciador de academias do projeto integrador de analise e desenvolvimento de sistemas. </h3>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
@@ -65,7 +65,7 @@
           <!-- PERFIL -->
           <li class="nav-item dropdown d-none d-lg-block user-dropdown">
             <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-              <img class="img-xs rounded-circle" src="images/faces/unidombosco.jpg" alt="Profile image"
+              <img class="img-xs rounded-circle" src="images/unidombosco.jpg" alt="Profile image"
                 style="width: 40px; height: 40px;"> </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <div class="dropdown-header text-center">
