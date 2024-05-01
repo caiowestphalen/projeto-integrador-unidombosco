@@ -2,21 +2,27 @@
 Projeto integrador - Analise e desenvolvimento de Sistemas
 
 
-# 📝 Descrição do projeto:
+# 📝 Gerenciador de Academia - Projeto Integrador
 
-...
+Este é um projeto desenvolvido como parte do Projeto Integrador do curso de Análise e Desenvolvimento de Sistemas da UniDomBosco. O Gerenciador de Academia é uma aplicação web para auxiliar na gestão de uma academia, permitindo o cadastro de alunos, controle de planos, agendamento de aulas e muito mais.
 
-# 🔧 Requisitos do Sistema:
-[x] **01:** Cadastro dos alunos <br>
-[x] **02:** Listagem dos alunos <br>
-[ ] **03:** Alterações de dados e exclusões de cadastros <br>
-[ ] **04:** Controle de agendamento <br>
+## 🔧 Funcionalidades Principais
 
-# 🔧 Plano do desenvolvimento:
-• Frontend em bootstrap para garantir o design responsivo e Javascript para garantir a interatividade do operador. <br>
-• Backend em PHP para realuzar o CRUD e MySQL para armazenamento dos dados dos alunos. Validações no banco para garantir a integridade do aluno. <br>
-• Integração via HTTP para enviar e receber dados do servidor e obter acesso externo. <br>
-• Testes e implantação em ambiente de hospedagem básico. <br>
+- Cadastro de novos alunos com informações detalhadas.
+- Controle de planos e status de alunos (ativos, visitantes, etc.).
+- Agendamento de aulas e eventos na academia.
+- Gerenciamento completo de informações de alunos, incluindo edição e exclusão.
+- Interface intuitiva e amigável para facilitar a navegação e utilização.
+
+## 🔧 Plano do Desenvolvimento
+
+- PHP: Linguagem de programação utilizada para o desenvolvimento do backend.
+- MySQL: Banco de dados relacional para armazenamento de dados.
+- HTML, CSS, JavaScript: Tecnologias front-end para criação da interface de usuário.
+- Bootstrap: Framework front-end para estilização e responsividade.
+- jQuery: Biblioteca JavaScript para interatividade e manipulação do DOM.
+- Git: Controle de versão para colaboração e gerenciamento do código-fonte.
+- GitHub: Plataforma para hospedagem do repositório e colaboração em equipe.
 
 
 # 🔧 Etapas do desenvolvimento:
