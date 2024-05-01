@@ -29,7 +29,7 @@ Projeto integrador - Analise e desenvolvimento de Sistemas
 [x] **05:** Criando o primeiro CRUD <br>
 
 **FRONT-END**  
-[ ] **06:** Criação do prototipo no Figma <br>
+[ ] **06:** Criação do prototipo bootstrap <br>
 [ ] **07**  Desenvolvimento em bootstrap <br>
 [ ] **08:** Implementação de consumo HTTP - GET e POST <br>
 [ ] **09:** Deploy no Pixcode <br>
