@@ -1,274 +1,366 @@
 <?php
-include_once('./includes/header.php');
-include_once('./includes/config.php');
+include('partials/conexao.php');
 
-// Função para exibir mensagem de erro em vermelho
-function showError($message) {
-    echo "<span style='color: red;'>$message</span>";
-}
 
-// Verificar se o formulário foi submetido
+// Defino as variaveis que vão armazenar os dados
+$nome = $rg = $data_nascimento = $sexo = $estado_civil = $status = $endereco = $cep = $bairro = $cidade = $complemento = $nacionalidade = $telefone = $email = $data_cadastro = $forma_pagamento = $plano = $dia_pagamento = "";
+
+$mensagem = "";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validação dos campos obrigatórios
-    $camposObrigatorios = array('nome', 'rg', 'profissao', 'sexo', 'data_nascimento', 'estado_civil2', 'email', 'telefone', 'cep', 'endereco', 'bairro', 'cidade', 'estado', 'dia_vencimento', 'forma_pagamento', 'plano');
+    // Recupero as informações via POST
+    $nome = $_POST["nome"];
+    $rg = $_POST["rg"];
+    $data_nascimento = $_POST["data_nascimento"];
+    $sexo = $_POST["sexo"];
+    $estado_civil = $_POST["estado_civil"];
+    $status = $_POST["status"];
+    $endereco = $_POST["endereco"];
+    $cep = $_POST["cep"];
+    $bairro = $_POST["bairro"];
+    $cidade = $_POST["cidade"];
+    $complemento = $_POST["complemento"];
+    $nacionalidade = $_POST["nacionalidade"];
+    $telefone = $_POST["telefone"];
+    $email = $_POST["email"];
+    $data_cadastro = date("Y-m-d");
+    $forma_pagamento = $_POST["forma_pagamento"];
+    $plano = $_POST["plano"];
+    $dia_pagamento = $_POST['dia_pagamento'];
 
-    $camposFaltando = array_filter($camposObrigatorios, function($campo) {
-        return empty($_POST[$campo]);
-    });
+    // Alimento com os dados do painel no SQL
+    $sql = "INSERT INTO alunos (nome, rg, data_nascimento, sexo, estado_civil, status, endereco, cep, bairro, cidade, complemento, nacionalidade, telefone, email, data_cadastro, forma_pagamento, plano, dia_pagamento) 
+            VALUES ('$nome', '$rg', '$data_nascimento', '$sexo', '$estado_civil', '$status', '$endereco', '$cep', '$bairro', '$cidade', '$complemento', '$nacionalidade', '$telefone', '$email', '$data_cadastro', '$forma_pagamento', '$plano', '$dia_pagamento')";
 
-    if (!empty($camposFaltando)) {
-        showError("<div class='alert alert-danger custom-alert' role='alert'>Todos os campos são obrigatórios!</div>");
+    if (mysqli_query($conn, $sql)) {
+        $mensagem = "Aluno cadastrado com sucesso.";
     } else {
-        // Atribuir valores dos campos do formulário a variáveis
-        $nome = $_POST['nome'];
-        $rg = $_POST['rg'];
-        $profissao = $_POST['profissao'];
-        $sexo = $_POST['sexo'];
-        $data_nascimento = $_POST['data_nascimento'];
-        $estado_civil = $_POST['estado_civil2'];
-        $email = $_POST['email'];
-        $telefone = $_POST['telefone'];
-        $cep = $_POST['cep'];
-        $endereco = $_POST['endereco'];
-        $bairro = $_POST['bairro'];
-        $cidade = $_POST['cidade'];
-        $estado = $_POST['estado'];
-        $dia_vencimento = $_POST['dia_vencimento'];
-        $forma_pagamento = $_POST['forma_pagamento'];
-        $plano = $_POST['plano'];
-
-        // Query para inserir os dados no banco de dados
-        $sql = "INSERT INTO alunos (nome, rg, profissao, sexo, data_nascimento, estado_civil2, email, telefone, cep, endereco, bairro, cidade, estado, dia_vencimento, forma_pagamento, plano) 
-        VALUES ('$nome', '$rg', '$profissao', '$sexo', '$data_nascimento', '$estado_civil', '$email', '$telefone', '$cep', '$endereco', '$bairro', '$cidade', '$estado', '$dia_vencimento', '$forma_pagamento', '$plano')";
-
-        // Executa a query
-        if ($conn->query($sql) === TRUE) {
-            $success_message = "Dados cadastrados com sucesso!";
-        } else {
-            $error_message = "Erro ao cadastrar dados: " . $conn->error;
-        }
+        $mensagem = "Erro: " . $sql . "<br>" . mysqli_error($conn);
     }
+
+    mysqli_close($conn);
 }
 ?>
 
 
 <!DOCTYPE html>
-<html lang="pt-br" class="no-js">
+<html lang="pt-br">
 
 <head>
-    <title>Projeto Integrador - Caio Westphalen RA22202420</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/main.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/my-custom-styles.css" rel="stylesheet" type="text/css">
-    <link rel="shortcut icon" href="assets/ico/favicon.png">
-    <style>
-        .custom-alert {
-            position: fixed;
-            top: 50px;
-            right: 20px;
-            z-index: 9999;
-            width: 900px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Projeto Integrador - Caio Westphalen</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/feather/feather.css">
+    <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/typicons/typicons.css">
+    <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="js/select.dataTables.min.css">
+    <!-- End plugin -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="images/favicon.png" />
+
 </head>
 
-<body class="sidebar-fixed topnav-fixed demo-only-page-blank">
-    <?php if (!empty($success_message)) : ?>
-        <div class="alert alert-success custom-alert" role="alert">
-            <?php echo $success_message; ?>
-        </div>
-    <?php endif; ?>
-    <div id="wrapper" class="wrapper">
-        <div id="main-content-wrapper" class="content-wrapper ">
-            <div class="row">
-                <div class="col-lg-4 ">
-                    <ul class="breadcrumb">
-                        <li><i class="fa fa-home"></i><a href="#">Home</a></li>
-                        <li><a href="#">Novo Aluno</a></li>
-                        <li class="active">Cadastro</li>
-                    </ul>
+<body>
+    <div class="row p-0 m-0 proBanner" id="proBanner">
+        <div class="col-md-12 p-0 m-0">
+            <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
+                <div class="ps-lg-1">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <p class="mb-0 font-weight-medium me-3 buy-now-text">Painel modelo para Projeto Integrador
+                            Analise e Desenvolvimento de Sistema - UniDomBosco</p>
+                    </div>
                 </div>
-
             </div>
-            <!-- CONTEUDO DA PAGINA -->
-            <div class="content">
-                <div class="main-header">
-                    <h2>Cadastro de Aluno</h2>
-                    <em>Faça o cadastro de um novo aluno na academia.</em>
-                </div>
-                <div class="main-content">
-                    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                        <!-- DADOS PESSOAIS -->
-                        <div class="widget">
-                            <div class="widget-header">
-                                <h3><i class="fa fa-users"></i> Dados pessoais</h3>
-                            </div>
-                            <div class="widget-content">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" name="nome" placeholder="Nome Completo" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="rg" placeholder="RG" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="profissao" placeholder="Profissão" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group" style="margin-top: 10px;">
-                                            <label class="control-inline fancy-radio">
-                                                <input type="radio" name="sexo" value="masculino">
-                                                <span><i></i><label class="label label-primary"> Masculino</label></span>
-                                            </label>
+        </div>
+    </div>
+    <?php include('partials/_navbar.php')?> <!-- BARRA TOPO -->
 
-                                            <label class="control-inline fancy-radio">
-                                                <input type="radio" name="sexo" value="feminino">
-                                                <span><i></i> <label class="label" style="background-color:deeppink;"> Feminino</label> </span>
-                                            </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="date" name="data_nascimento" placeholder="Data de Nascimento" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="estado_civil" placeholder="Estado Civil" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
+    <div class="container-fluid page-body-wrapper">
+        <?php include('partials/_sidebar.php')?> <!-- MENU -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="home-tab">
+                            <div class="d-sm-flex align-items-center justify-content-between border-bottom">
+                                <!-- DIVISOR -->
                             </div>
-                        </div>
-                        <!-- FIM DADOS PESSOAIS -->
 
-                        <!-- DADOS CONTATO -->
-                        <div class="widget">
-                            <div class="widget-header">
-                                <h3><i class="fa fa-phone"></i> Informações de Contato</h3>
-                            </div>
-                            <div class="widget-content">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" name="email" placeholder="E-mail" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="telefone" placeholder="Whatsapp" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="bairro" placeholder="Bairro" class="form-control">
-                                        </div>
+
+                            <div class="tab-content tab-content-basic">
+                                <div class="tab-pane fade show active" id="overview" role="tabpanel"
+                                    aria-labelledby="overview">
+                                    <div class="row">
+                                        <!-- CONTEUDOS DA PAGINA AQUI -->
+                                        <?php if (!empty($mensagem)): ?>
+                                            <div class="alert alert-primary" role="alert">
+                                                <?php echo $mensagem; ?>
+                                            </div>
+                                        <?php endif; ?>
+
+                                            <div class="col-12 grid-margin">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Cadastro do Aluno</h4>
+                                                        <form class="form-sample" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                                                            <p class="card-description text-primary">
+                                                                DADOS PESSOAIS
+                                                            </p>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-3 col-form-label">Nome
+                                                                            Completo</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" class="form-control" name="nome">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row">
+                                                                        <label
+                                                                            class="col-sm-3 col-form-label">RG</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" class="form-control" name="rg">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row">
+                                                                        <label
+                                                                            class="col-sm-3 col-form-label">Sexo</label>
+                                                                        <div class="col-sm-9" for="sexo">
+                                                                            <select class="form-control" name="sexo">
+                                                                                <option>Masculino</option>
+                                                                                <option>Feminino</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-3 col-form-label">Data de
+                                                                            Nascimento</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="date" class="form-control" placeholder="dd/mm/yyyy" name="data_nascimento">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-3 col-form-label" for="estado_civil">Estado
+                                                                            Civil</label>
+                                                                        <div class="col-sm-9">
+                                                                            <select class="form-control" name="estado_civil">
+                                                                                <option>Solteiro(a)</option>
+                                                                                <option>Casado(a)</option>
+                                                                                <option>Divorciado(a)</option>
+                                                                                <option>Viúvo(a)</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-3 col-form-label" for="status">Membro</label>
+                                                                        <div class="col-sm-9">
+                                                                            <select class="form-control" name="status">
+                                                                                <option>Ativo</option>
+                                                                                <option>Visitante</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <p class="card-description text-primary">
+                                                                DADOS DE CONTATO
+                                                            </p>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-3 col-form-label">Endereço
+                                                                        </label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" class="form-control" name="endereco">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row">
+                                                                        <label
+                                                                            class="col-sm-3 col-form-label">Bairro</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" class="form-control" name="bairro">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row">
+                                                                        <label
+                                                                            class="col-sm-3 col-form-label">CEP</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" class="form-control" name="cep">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row">
+                                                                        <label
+                                                                            class="col-sm-3 col-form-label">Complemento</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" class="form-control" name="complemento">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row">
+                                                                        <label
+                                                                            class="col-sm-3 col-form-label">Cidade</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" class="form-control" name="cidade">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row">
+                                                                        <label
+                                                                            class="col-sm-3 col-form-label">Nacionalidade</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" class="form-control" name="nacionalidade">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row">
+                                                                        <label
+                                                                            class="col-sm-3 col-form-label">Telefone</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" class="form-control" name="telefone">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row">
+                                                                        <label
+                                                                            class="col-sm-3 col-form-label">E-mail</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" class="form-control" name="email">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <p class="card-description text-primary">
+                                                                DADOS DE PAGAMENTO
+                                                            </p>
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-3 col-form-label" for="plano">Plano</label>
+                                                                        <div class="col-sm-9">
+                                                                            <select class="form-control" name="plano">
+                                                                                <option>Mensal</option>
+                                                                                <option>Trimestral</option>
+                                                                                <option>Anual</option>
+
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-3 col-form-label" for="forma_pagamento">Forma</label>
+                                                                        <div class="col-sm-9">
+                                                                            <select class="form-control" name="forma_pagamento">
+                                                                                <option>PIX</option>
+                                                                                <option>Cartão de Crédito</option>
+                                                                                <option>Dinheiro</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                              <div class="col-md-4">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-3 col-form-label" for="dia_pagamento">Dia</label>
+                                                                        <div class="col-sm-9">
+                                                                            <select class="form-control" name="dia_pagamento">
+                                                                                <?php
+                                                                                for ($i = 1; $i <= 31; $i++) {
+                                                                                    echo "<option value='$i'>$i</option>";
+                                                                                }
+                                                                                ?>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        <button type="submit" class="btn btn-outline-primary btn-cadastrar me-2">Cadastrar</button>
+                                                        <button class="btn btn-light">Cancelar</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
                                         
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" name="cep" placeholder="CEP" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="endereco" placeholder="Endereço" class="form-control">
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="form-group col-md-6">
-                                                <input type="text" name="cidade" placeholder="Cidade" class="form-control">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <input type="text" name="estado" placeholder="Estado" class="form-control">
-                                            </div>
-                                        </div>
+                                        <!-- FIM DOS CONTEUDOS -->
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- FIM DADOS CONTATO -->
 
-                        <!-- DADOS PAGAMENTO -->
-                        <div class="widget">
-                            <div class="widget-header">
-                                <h3><i class="fa fa-money"></i> Dados de Pagamento</h3>
-                            </div>
-                            <div class="widget-content">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <span class="text">Dia do pagamento: </span>
-                                            <select name="dia_vencimento" class="form-control">
-                                                <option value="">Selecione...</option>
-                                                <option value="01">01</option>
-                                                <option value="02">02</option>
-                                                <option value="03">03</option>
-                                                <option value="04">04</option>
-                                                <option value="05">05</option>
-                                                <option value="06">06</option>
-                                                <option value="07">07</option>
-                                                <option value="08">08</option>
-                                                <option value="09">09</option>
-                                                <?php
-                                                for ($i = 10; $i <= 30; $i++) {
-                                                    echo "<option value='$i'>$i</option>";
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <span class="text">Forma de pagamento: </span>
-                                            <select name="forma_pagamento" class="form-control">
-                                                <option value="">Selecione...</option>
-                                                <option value="cartao_credito">Cartão de Crédito</option>
-                                                <option value="cartao_debito">Cartão de Débito</option>
-                                                <option value="pix">PIX</option>
-                                                <option value="boleto">Boleto de Pagamento</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <span class="text">Plano: </span>
-                                            <select name="plano" class="form-control">
-                                                <option value="">Selecione...</option>
-                                                <option value="safira">Plano Safira - (R$ 100,00)</option>
-                                                <option value="gold">Plano Gold - (R$ 190,00)</option>
-                                                <option value="premium">Plano Premium - (R$ 275,00)</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button type="submit" class="btn btn-success btn-block"><i class="fa fa-check-circle"></i> Cadastrar</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button type="button" class="btn btn-danger btn-block"><i class="fa fa-trash-o"></i> Cancelar</button>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-                <!-- FIM DADOS PAGAMENTO -->
             </div>
         </div>
-        <!-- FIM CONTEUDO DA PAGINA -->
+
+
     </div>
     </div>
 
-    <!-- Javascript -->
-    <script src="assets/js/jquery/jquery-2.1.0.min.js"></script>
-    <script src="assets/js/bootstrap/bootstrap.js"></script>
-    <script src="assets/js/plugins/modernizr/modernizr.js"></script>
-    <script src="assets/js/plugins/bootstrap-tour/bootstrap-tour.custom.js"></script>
-    <script src="assets/js/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="assets/js/king-common.js"></script>
+    <!-- plugins:js -->
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="vendors/chart.js/Chart.min.js"></script>
+    <script src="vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="vendors/progressbar.js/progressbar.min.js"></script>
 
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="js/off-canvas.js"></script>
+    <script src="js/hoverable-collapse.js"></script>
+    <script src="js/template.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/jquery.cookie.js" type="text/javascript"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/Chart.roundedBarCharts.js"></script>
+    <!-- End custom js for this page-->
 </body>
 
 </html>
