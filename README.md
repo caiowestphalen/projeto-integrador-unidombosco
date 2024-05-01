@@ -27,14 +27,14 @@ Este é um projeto desenvolvido como parte do Projeto Integrador do curso de An�
 
 # 🔧 Etapas do desenvolvimento:
 
-## Backend  
+**Backend**
 - Definindo o escopo do projeto <br>
 - Prototipando o Banco de dados <br>
 - Criando o meu projeto <br>
 - Primeiro modelo do meu projeto <br>
 - Criando o primeiro CRUD <br>
 
-## Frontend  
+**Frontend**  
 - Criação do prototipo bootstrap <br>
 -  Desenvolvimento em bootstrap <br>
 - Implementação de consumo HTTP - GET e POST <br>
