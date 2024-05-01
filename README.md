@@ -4,9 +4,11 @@ Projeto integrador - Analise e desenvolvimento de Sistemas
 
 # 📝 Gerenciador de Academia - Projeto Integrador
 
+🏋️‍♂️ **GYMHUB** 🏋️‍♂️
+
 Este é um projeto desenvolvido como parte do Projeto Integrador do curso de Análise e Desenvolvimento de Sistemas da UniDomBosco. O Gerenciador de Academia é uma aplicação web para auxiliar na gestão de uma academia, permitindo o cadastro de alunos, controle de planos, agendamento de aulas e muito mais.
 
-## 🔧 Funcionalidades Principais
+## 🛠️ Funcionalidades Principais
 
 - Cadastro de novos alunos com informações detalhadas.
 - Controle de planos e status de alunos (ativos, visitantes, etc.).
@@ -25,7 +27,7 @@ Este é um projeto desenvolvido como parte do Projeto Integrador do curso de An�
 - GitHub: Plataforma para hospedagem do repositório e colaboração em equipe.
 
 
-# 🔧 Etapas do desenvolvimento:
+## 🖥️ Etapas do desenvolvimento:
 
 **Backend**
 - Definindo o escopo do projeto <br>
